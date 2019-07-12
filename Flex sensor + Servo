@@ -1,0 +1,18 @@
+  #include<Servo.h>
+  Servo x;             //define object
+  int flexpin=A0;
+  int val;
+  int maxval = 870;    //redefine the maxval according to your sensor
+  int minval = 750;    //redefine the minval according to your sensor
+  void setup() 
+  {
+    x.attach(9);       //Servo attache to pin 9
+  }
+  
+  void loop() 
+  {
+    val = analogRead(flexpin);
+    val = map(val,maxval,minval,180,0); // Map the values from 0 to 180
+    x.write(val);
+    delay(10);
+  }
